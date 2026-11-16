@@ -1,0 +1,48 @@
+{
+  "manifest_version": 2,
+  "name": "pi 网页问答",
+  "version": "0.2.0",
+  "description": "侧边栏 AI 对话：结合当前网页正文与选中文字提问、追问，并保留历史会话。后端是你本机的 pi agent。",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "pi-web-ask@qmindong",
+      "strict_min_version": "115.0"
+    }
+  },
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "menus",
+    "storage",
+    "<all_urls>",
+    "http://127.0.0.1/*"
+  ],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": true
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
+  "sidebar_action": {
+    "default_panel": "sidebar.html",
+    "default_title": "pi 问答",
+    "open_at_install": false
+  },
+  "browser_action": {
+    "default_title": "pi 问答（Alt+Shift+P）"
+  },
+  "commands": {
+    "ask-pi": {
+      "suggested_key": {
+        "default": "Alt+Shift+P"
+      },
+      "description": "打开 pi 侧边栏提问"
+    }
+  }
+}

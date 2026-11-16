@@ -1,0 +1,14 @@
+[Unit]
+Description=pi-web-ask daemon (Firefox sidebar Q&A → local pi agent)
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=@NODE@ @REPO@/daemon.mjs
+Environment=PATH=%h/.local/bin:/usr/local/bin:/usr/bin:/bin
+Environment=PI_WEB_ASK_PORT=7649
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=default.target

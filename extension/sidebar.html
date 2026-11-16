@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <title>pi 问答</title>
+    <link rel="stylesheet" href="sidebar.css" />
+  </head>
+  <body>
+    <div id="app">
+      <header>
+        <button id="btn-back" class="icon hidden" title="返回对话">←</button>
+        <div class="brand"><span class="dot" id="dot"></span><span id="brandTitle">pi</span></div>
+        <div class="spacer"></div>
+        <button id="btn-new" class="icon" title="新对话">＋</button>
+        <button id="btn-term" class="icon" title="在终端继续这个对话（复制命令）">&gt;_</button>
+        <button id="btn-history" class="icon" title="历史对话">☰</button>
+      </header>
+
+      <section id="historyView" class="hidden">
+        <div class="search">
+          <input id="hsearch" type="search" placeholder="搜索历史对话…" autocomplete="off" />
+        </div>
+        <div id="hcount" class="hcount"></div>
+        <div id="hlist" class="hlist"></div>
+        <div id="hempty" class="hempty hidden">还没有历史对话</div>
+      </section>
+
+      <main id="chatView">
+        <div id="messages"></div>
+        <div id="welcome" class="welcome">
+          <div class="wtitle">问这一页<br />或划选的一段</div>
+          <div class="wsub">
+            按 <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> 随时打开这个侧边栏。<br />
+            回答会基于当前标签页的整页正文。
+          </div>
+          <div class="wchips">
+            <button data-q="用几句话总结这个页面的核心内容。">总结全页</button>
+            <button data-q="这一页最关键的三个要点是什么？每点一两句话。">三个要点</button>
+            <button data-q="这一页有哪些值得怀疑、证据不足或需要核实的地方？">挑毛病</button>
+          </div>
+        </div>
+      </main>
+
+      <footer>
+        <div id="ctxbar" class="ctxbar"></div>
+        <div id="chips" class="chips"></div>
+        <div class="composer">
+          <textarea id="input" rows="1" placeholder="问点什么…（Enter 发送，Shift+Enter 换行）"></textarea>
+          <button id="send" title="发送 (Enter)"><span id="sendIcon">↑</span></button>
+        </div>
+        <div id="hint" class="hint"></div>
+      </footer>
+    </div>
+    <script src="sidebar.js"></script>
+  </body>
+</html>
